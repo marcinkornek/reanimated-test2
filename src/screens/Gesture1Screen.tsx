@@ -1,11 +1,9 @@
 import React from 'react';
-import {Alert, Button, StyleSheet, Text, View} from 'react-native';
+import {Alert, StyleSheet, Text, View} from 'react-native';
 import { LongPressGestureHandler, State } from 'react-native-gesture-handler';
 
 export const Gesture1Screen = () => {
   const _handleStateChange = ({ nativeEvent }) => {
-    console.log('nativeEvent.state', nativeEvent.state)
-
     if (nativeEvent.state === State.ACTIVE) {
       Alert.alert('Longpress');
     }
