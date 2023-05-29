@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {Button, View} from 'react-native';
 import {SCREEN_NAMES} from '../../constants/screenNames';
 import {HomeScreenNavigationProps} from '../../types/navigation';
 
@@ -9,10 +9,10 @@ export const HomeScreen = () => {
 
   return (
     <View>
-      <Pressable
-        onPress={() => navigation.navigate(SCREEN_NAMES.ANIMATION1_SCREEN)}>
-        <Text>Animation1</Text>
-      </Pressable>
+      <Button
+        onPress={() => navigation.navigate(SCREEN_NAMES.ANIMATION1_SCREEN)}
+        title="Animation1"
+      />
     </View>
   );
 };
