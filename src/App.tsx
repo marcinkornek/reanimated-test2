@@ -5,19 +5,30 @@ import {HomeScreen} from './screens/HomeScreen';
 import {Animation1Screen} from './screens/Animation1Screen';
 import {RootStackParamList} from '../types/navigation';
 import {SCREEN_NAMES} from '../constants/screenNames';
+import {Gesture1Screen} from './screens/Gesture1Screen';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name={SCREEN_NAMES.HOME_SCREEN} component={HomeScreen} />
-        <Stack.Screen
-          name={SCREEN_NAMES.ANIMATION1_SCREEN}
-          component={Animation1Screen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name={SCREEN_NAMES.HOME_SCREEN}
+            component={HomeScreen}
+          />
+          <Stack.Screen
+            name={SCREEN_NAMES.ANIMATION1_SCREEN}
+            component={Animation1Screen}
+          />
+          <Stack.Screen
+            name={SCREEN_NAMES.GESTURE1_SCREEN}
+            component={Gesture1Screen}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
