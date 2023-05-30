@@ -8,6 +8,7 @@ export type RootStackParamList = {
   [SCREEN_NAMES.GESTURE2_SCREEN]: undefined;
   [SCREEN_NAMES.ANIMATION2_SCREEN]: undefined;
   [SCREEN_NAMES.GESTURE3_SCREEN]: undefined;
+  [SCREEN_NAMES.ANIMATION3_SCREEN]: undefined;
 };
 
 export type HomeScreenNavigationProps = NativeStackNavigationProp<

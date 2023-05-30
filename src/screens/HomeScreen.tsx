@@ -29,6 +29,10 @@ export const HomeScreen = () => {
         onPress={() => navigation.navigate(SCREEN_NAMES.GESTURE3_SCREEN)}
         title="Gesture3"
       />
+      <Button
+        onPress={() => navigation.navigate(SCREEN_NAMES.ANIMATION3_SCREEN)}
+        title="Animation3"
+      />
     </View>
   );
 };

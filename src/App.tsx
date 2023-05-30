@@ -10,6 +10,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Gesture2Screen} from './screens/Gesture2Screen';
 import {Animation2Screen} from './screens/Animation2Screen';
 import {Gesture3Screen} from './screens/Gesture3Screen';
+import {Animation3Screen} from './screens/Animation3Screen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -31,16 +32,20 @@ export default function App() {
             component={Gesture1Screen}
           />
           <Stack.Screen
-            name={SCREEN_NAMES.ANIMATION2_SCREEN}
-            component={Animation2Screen}
-          />
-          <Stack.Screen
             name={SCREEN_NAMES.GESTURE2_SCREEN}
             component={Gesture2Screen}
           />
           <Stack.Screen
+            name={SCREEN_NAMES.ANIMATION2_SCREEN}
+            component={Animation2Screen}
+          />
+          <Stack.Screen
             name={SCREEN_NAMES.GESTURE3_SCREEN}
             component={Gesture3Screen}
+          />
+          <Stack.Screen
+            name={SCREEN_NAMES.ANIMATION3_SCREEN}
+            component={Animation3Screen}
           />
         </Stack.Navigator>
       </NavigationContainer>
