@@ -32,22 +32,14 @@ export const Gesture2Screen = () => {
       positionY.value = e.translationY + offsetY.value;
     })
     .onEnd(e => {
-      if (positionX.value < 0) {
-        positionX.value = 0;
-        offsetX.value = 0;
-      }
-      if (positionX.value > width - ITEM_WIDTH) {
-        positionX.value = width - ITEM_WIDTH;
-        offsetX.value = 0;
-      }
-      if (positionY.value < 0) {
-        positionY.value = 0;
-        offsetY.value = 0;
-      }
-      if (positionY.value > windowHeight - ITEM_HEIGHT) {
-        positionY.value = windowHeight - ITEM_HEIGHT;
-        offsetY.value = 0;
-      }
+      positionX.value = Math.max(
+        0,
+        Math.min(positionX.value, width - ITEM_WIDTH),
+      );
+      positionY.value = Math.max(
+        0,
+        Math.min(positionY.value, windowHeight - ITEM_HEIGHT),
+      );
     });
 
   const animatedStyle = useAnimatedStyle(() => ({
