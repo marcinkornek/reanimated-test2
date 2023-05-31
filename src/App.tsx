@@ -12,6 +12,7 @@ import {Animation2Screen} from './screens/Animation2Screen';
 import {Gesture3Screen} from './screens/Gesture3Screen';
 import {Animation3Screen} from './screens/Animation3Screen';
 import {CarouselScreen} from './screens/CarouselScreen';
+import {AnimatedHeaderScreen} from './screens/AnimatedHeaderScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -51,6 +52,10 @@ export default function App() {
           <Stack.Screen
             name={SCREEN_NAMES.CAROUSEL_SCREEN}
             component={CarouselScreen}
+          />
+          <Stack.Screen
+            name={SCREEN_NAMES.ANIMATED_HEADER_SCREEN}
+            component={AnimatedHeaderScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
