@@ -33,6 +33,10 @@ export const HomeScreen = () => {
         onPress={() => navigation.navigate(SCREEN_NAMES.ANIMATION3_SCREEN)}
         title="Animation3"
       />
+      <Button
+        onPress={() => navigation.navigate(SCREEN_NAMES.CAROUSEL_SCREEN)}
+        title="CarouselScreen"
+      />
     </View>
   );
 };
