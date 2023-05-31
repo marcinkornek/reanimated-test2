@@ -41,6 +41,12 @@ export const HomeScreen = () => {
         onPress={() => navigation.navigate(SCREEN_NAMES.ANIMATED_HEADER_SCREEN)}
         title="AnimatedHeaderScreen"
       />
+      <Button
+        onPress={() =>
+          navigation.navigate(SCREEN_NAMES.ANIMATED_HEADER_V2_SCREEN)
+        }
+        title="AnimatedHeaderV2Screen"
+      />
     </View>
   );
 };

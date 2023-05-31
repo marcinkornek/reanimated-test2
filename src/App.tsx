@@ -13,6 +13,7 @@ import {Gesture3Screen} from './screens/Gesture3Screen';
 import {Animation3Screen} from './screens/Animation3Screen';
 import {CarouselScreen} from './screens/CarouselScreen';
 import {AnimatedHeaderScreen} from './screens/AnimatedHeaderScreen';
+import {AnimatedHeaderV2Screen} from './screens/AnimatedHeaderV2Screen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -62,6 +63,17 @@ export default function App() {
             options={{
               headerTitle: '',
               headerTransparent: true,
+            }}
+          />
+          <Stack.Screen
+            name={SCREEN_NAMES.ANIMATED_HEADER_V2_SCREEN}
+            component={AnimatedHeaderV2Screen}
+            options={{
+              headerTitle: '',
+              headerStyle: {
+                backgroundColor: 'rgb(242, 242, 242)',
+              },
+              headerShadowVisible: false,
             }}
           />
         </Stack.Navigator>
