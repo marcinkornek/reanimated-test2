@@ -20,7 +20,10 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerBackTitleVisible: false,
+          }}>
           <Stack.Screen
             name={SCREEN_NAMES.HOME_SCREEN}
             component={HomeScreen}
@@ -56,6 +59,10 @@ export default function App() {
           <Stack.Screen
             name={SCREEN_NAMES.ANIMATED_HEADER_SCREEN}
             component={AnimatedHeaderScreen}
+            options={{
+              headerTitle: '',
+              headerTransparent: true,
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
