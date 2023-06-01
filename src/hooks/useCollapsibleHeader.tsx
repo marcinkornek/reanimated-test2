@@ -1,12 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {StyleSheet} from 'react-native';
-import Animated, {
+import React, {useMemo} from 'react';
+import {
   runOnJS,
   useAnimatedScrollHandler,
-  useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
+import {HeaderTitle} from '../components/HeaderTitle';
 
 type UseCollapsibleHeaderProps = {
   title: string;
@@ -30,37 +29,19 @@ export const useCollapsibleHeader = ({title}: UseCollapsibleHeaderProps) => {
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: event => {
-      const show = event.contentOffset.y > 38;
+      const show = event.contentOffset.y > 20;
       showHeader.value = show;
 
       runOnJS(showHeaderJS)(show);
     },
   });
 
-  const titleAnimatedStyles = useAnimatedStyle(() => {
-    return {
-      opacity: showHeader.value ? 0 : 1,
-    };
-  });
-
-  const renderHeader = () => {
-    return (
-      <Animated.Text style={[styles.headerText, titleAnimatedStyles]}>
-        {title}
-      </Animated.Text>
-    );
-  };
+  const renderHeader = useMemo(() => {
+    return <HeaderTitle title={title} showHeader={showHeader} />;
+  }, [showHeader, title]);
 
   return {
-    renderHeader,
+    renderHeader: () => renderHeader,
     scrollHandler,
   };
 };
-
-const styles = StyleSheet.create({
-  headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'black',
-  },
-});

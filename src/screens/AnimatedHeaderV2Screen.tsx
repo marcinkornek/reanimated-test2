@@ -1,12 +1,6 @@
-import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Animated, {
-  runOnJS,
-  useAnimatedScrollHandler,
-  useAnimatedStyle,
-  useSharedValue,
-} from 'react-native-reanimated';
+import React, {useState} from 'react';
+import {Button, StyleSheet, Text, View} from 'react-native';
+import Animated from 'react-native-reanimated';
 import {useCollapsibleHeader} from '../hooks/useCollapsibleHeader';
 
 const data = Array.from({length: 20}).map((_, i) => ({
@@ -17,7 +11,10 @@ const data = Array.from({length: 20}).map((_, i) => ({
 const TITLE = 'AnimatedHeaderV2';
 
 export const AnimatedHeaderV2Screen = () => {
-  const {renderHeader, scrollHandler} = useCollapsibleHeader({title: TITLE});
+  const {renderHeader: renderTitleHeader, scrollHandler} = useCollapsibleHeader(
+    {title: TITLE},
+  );
+  const [items, setItems] = useState(data);
 
   const renderItem = ({item}: {item: (typeof data)[0]}) => {
     return (
@@ -27,9 +24,27 @@ export const AnimatedHeaderV2Screen = () => {
     );
   };
 
+  const addItemToArray = () => {
+    setItems(prevState => {
+      return [
+        {id: Date.now(), title: `title ${prevState.length + 1}`},
+        ...prevState,
+      ];
+    });
+  };
+
+  const renderHeader = () => {
+    return (
+      <View>
+        {renderTitleHeader()}
+        <Button title="Add" onPress={addItemToArray} />
+      </View>
+    );
+  };
+
   return (
     <Animated.FlatList
-      data={data}
+      data={items}
       renderItem={renderItem}
       keyExtractor={item => item.id.toString()}
       ListHeaderComponent={renderHeader()}
