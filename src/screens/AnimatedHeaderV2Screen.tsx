@@ -7,6 +7,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
+import {useCollapsibleHeader} from '../hooks/useCollapsibleHeader';
 
 const data = Array.from({length: 20}).map((_, i) => ({
   id: i,
@@ -16,35 +17,7 @@ const data = Array.from({length: 20}).map((_, i) => ({
 const TITLE = 'AnimatedHeaderV2';
 
 export const AnimatedHeaderV2Screen = () => {
-  const navigation = useNavigation();
-  const showHeader = useSharedValue(false);
-
-  const showHeaderJS = (show: boolean) => {
-    navigation.setOptions({
-      headerTitle: show ? TITLE : '',
-      headerStyle: show
-        ? undefined
-        : {
-            backgroundColor: 'rgb(242, 242, 242)',
-          },
-      headerShadowVisible: show,
-    });
-  };
-
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: event => {
-      const show = event.contentOffset.y > 38;
-      showHeader.value = show;
-
-      runOnJS(showHeaderJS)(show);
-    },
-  });
-
-  const titleAnimatedStyles = useAnimatedStyle(() => {
-    return {
-      opacity: showHeader.value ? 0 : 1,
-    };
-  });
+  const {renderHeader, scrollHandler} = useCollapsibleHeader({title: TITLE});
 
   const renderItem = ({item}: {item: (typeof data)[0]}) => {
     return (
@@ -53,12 +26,6 @@ export const AnimatedHeaderV2Screen = () => {
       </View>
     );
   };
-
-  const renderHeader = () => (
-    <Animated.Text style={[styles.headerText, titleAnimatedStyles]}>
-      {TITLE}
-    </Animated.Text>
-  );
 
   return (
     <Animated.FlatList
